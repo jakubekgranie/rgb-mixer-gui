@@ -1,0 +1,54 @@
+﻿<Window x:Class="rgb_mixer_revision2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rgb_mixer_revision2"
+        mc:Ignorable="d"
+        Title="Color Mixer by jakubekgranie" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel Margin="20" HorizontalAlignment="Center">
+            <Grid Width="185">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderThickness="1.5" BorderBrush="Black" Margin="0, 0, 19, 0">
+                    <TextBox Width="68" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21, 11" MaxLength="9"></TextBox>
+                </Border>
+                <Button Grid.Column="1">
+                    <Image Source="picker.png" Width="29" Height="29" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </Grid>
+            <Label FontFamily="Cascadia Code" HorizontalAlignment="Center" Margin="0, 10, 0, 10">Color #1</Label>
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0">
+                    <Image Source="arrow-left.png" Width="21" Height="21" Margin="8" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+                <Button Grid.Column="1" Background="#8BC34A" BorderBrush="#4e6d2b" Margin="10, 0">
+                    <Image Source="blend.png" Width="27" Height="27" Margin="5, 0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+                <Button Grid.Column="2" Background="#F44336" BorderBrush="#a62c23" Margin="0, 0, 10, 0">
+                    <Image Source="block.png" Width="27" Height="27" Margin="5, 0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+                <Button Grid.Column="3">
+                    <Image Source="arrow-right.png" Width="21" Height="21" Margin="8" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </Grid>
+            <Grid Width="113" Margin="0, 20, 0 ,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="1.5" BorderBrush="Black">
+                    <TextBox Width="68" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21, 11" MaxLength="9"></TextBox>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
