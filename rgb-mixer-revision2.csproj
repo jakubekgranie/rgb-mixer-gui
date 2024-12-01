@@ -2,19 +2,30 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
-    <RootNamespace>rgb_mixer_revision2</RootNamespace>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <RootNamespace>shwcolormix</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>wpfblender.ico</ApplicationIcon>
+    <AssemblyName>ShatterWares Color Mixer</AssemblyName>
+    <Company>Jakub Namyślak</Company>
+    <Authors>Jakub Namyślak</Authors>
+    <Copyright>Jakub Namyślak</Copyright>
+    <PackageProjectUrl>https://github.com/jakubekgranie/rgb-mixer-gui</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="arrow-left.png" />
     <None Remove="arrow-right.png" />
-    <None Remove="blend.png" />
-    <None Remove="block.png" />
     <None Remove="picker.png" />
+    <None Remove="Resources\blend.png" />
+    <None Remove="Resources\block.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wpfblender.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,13 +35,13 @@
     <Resource Include="arrow-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="blend.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="block.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="picker.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\blend.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\block.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
