@@ -16,12 +16,22 @@
     <PackageProjectUrl>https://github.com/jakubekgranie/rgb-mixer-gui</PackageProjectUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8604;8618;0649</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;8604;8618;0649</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="arrow-left.png" />
     <None Remove="arrow-right.png" />
     <None Remove="picker.png" />
+    <None Remove="Resources\add.png" />
     <None Remove="Resources\blend.png" />
     <None Remove="Resources\block.png" />
+    <None Remove="Resources\remove.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,10 +48,16 @@
     <Resource Include="picker.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\blend.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\block.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\remove.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

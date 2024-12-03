@@ -63,6 +63,16 @@ namespace shwcolormix.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] blend {
             get {
                 object obj = ResourceManager.GetObject("blend", resourceCulture);
@@ -76,6 +86,16 @@ namespace shwcolormix.Properties {
         internal static byte[] block {
             get {
                 object obj = ResourceManager.GetObject("block", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] remove {
+            get {
+                object obj = ResourceManager.GetObject("remove", resourceCulture);
                 return ((byte[])(obj));
             }
         }
