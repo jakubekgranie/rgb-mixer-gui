@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:rgb_mixer_revision2"
         mc:Ignorable="d"
         Title="Color Mixer by jakubekgranie" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary Source="dict.xaml"/>
+    </Window.Resources>
     <Grid>
         <StackPanel Margin="20" HorizontalAlignment="Center">
             <Grid HorizontalAlignment="Center">
@@ -17,7 +20,7 @@
                     <TextBox Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="21, 11" MaxLength="13" Name="hex" KeyUp="RegisterColor">#ffffff</TextBox>
                 </Border>
                 <Button Grid.Column="1">
-                    <Image Source="picker.png" Width="29" Height="29" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <Image Source="pack://application:,,,/picker.png" Width="29" Height="29" Margin="10" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
             </Grid>
             <Grid Margin="0, 10" HorizontalAlignment="Center">
@@ -36,20 +39,20 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Click="Arrow1">
-                    <Image Source="arrow-left.png" Width="21" Height="21" Margin="8" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Button Grid.Column="0" Click="ArrowTrigger" Tag="-1">
+                    <Image Source="pack://application:,,,/arrow-left.png" Style="{StaticResource ArrowImage}"/>
                 </Button>
                 <Button Grid.Column="1" Background="#81FFCE" BorderBrush="#498A71" Margin="10, 0" Click="AddItem">
-                    <Image Source="Resources/add.png" Width="27" Height="27" Margin="5, 0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <Image Source="pack://application:,,,/add.png" Style="{StaticResource MiscImage}"/>
                 </Button>
                 <Button Grid.Column="2" Background="#8BC34A" BorderBrush="#4E6D2B" Click="Button_Click" Name="blendButton">
-                    <Image Source="Resources/blend.png" Width="27" Height="27" Margin="5, 0" RenderOptions.BitmapScalingMode="HighQuality" Name="blendImage"/>
+                    <Image Source="pack://application:,,,/blend.png" Style="{StaticResource MiscImage}" Name="blendImage"/>
                 </Button>
                 <Button Grid.Column="3" Background="#FF81B2" BorderBrush="#8A4962" Margin="10, 0" Click="RemoveItem">
-                    <Image Source="Resources/remove.png" Width="27" Height="27" Margin="5, 0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <Image Source="pack://application:,,,/remove.png" Style="{StaticResource MiscImage}"/>
                 </Button>
-                <Button Grid.Column="4" Click="Arrow2">
-                    <Image Source="arrow-right.png" Width="21" Height="21" Margin="8" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Button Grid.Column="4" Click="ArrowTrigger" Tag="1">
+                    <Image Source="pack://application:,,,/arrow-right.png" Style="{StaticResource ArrowImage}"/>
                 </Button>
             </Grid>
             <Grid Margin="0, 20, 0 ,0" HorizontalAlignment="Center">
@@ -61,7 +64,7 @@
                         <TextBox Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10.5, 11, 10.5, 0" MaxLength="15" IsReadOnly="True" Name="hexOutput"></TextBox>
                         <TextBox Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10.5, 0, 10.5, 11" MaxLength="15" IsReadOnly="True" Name="rgbOutput"></TextBox>
                     </StackPanel>
-                 </Border>
+                </Border>
             </Grid>
         </StackPanel>
     </Grid>

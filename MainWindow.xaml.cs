@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace rgb_mixer_revision2
 {
@@ -14,8 +15,6 @@ namespace rgb_mixer_revision2
         }
         readonly List<int[]> hexes = [[255, 255, 255]]; // hex data
         readonly List<bool> toMix = [false]; // blend options
-        private readonly KeyEventArgs rea;
-        private readonly object s;
         private void Blend()
         {
             int active = 0;
@@ -52,12 +51,12 @@ namespace rgb_mixer_revision2
                 supplementaryOutput.BorderBrush = new SolidColorBrush(Color.FromRgb((byte)((parsed[0] < 234) ? parsed[0] + 32 : parsed[0]), (byte)((parsed[1] < 234) ? parsed[1] + 32 : parsed[1]), (byte)((parsed[2] < 234) ? parsed[2] + 32 : parsed[2])));
             }
         }
-        private void RegisterColor(object sender, KeyEventArgs e)
+        private void RegisterColor(object? sender, KeyEventArgs? e)
         {
             string input = hex.Text;
             string[] pattern = ["^#?([0-9A-Fa-f]){6}$", "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])([ ,]|, )(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])([ ,]|, )(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$"];
-            for(uint j = 0; j < pattern.Length; j++)
-                if(Regex.Match(input, pattern[j]).Success)
+            for (uint j = 0; j < pattern.Length; j++)
+                if (Regex.Match(input, pattern[j]).Success)
                 {
                     int[] ready = new int[3];
                     if (j == 0)
@@ -78,7 +77,7 @@ namespace rgb_mixer_revision2
                             ready = [rgb[0] * 16 + rgb[1], rgb[2] * 16 + rgb[3], rgb[4] * 16 + rgb[5]];
                         }
                     }
-                    else if(j == 1)
+                    else if (j == 1)
                     {
                         string temp = "";
                         int rgbIndex = -1;
@@ -101,7 +100,7 @@ namespace rgb_mixer_revision2
                         toMix.Add(false);
                     }
                     else
-                       hexes[cID] = ready;
+                        hexes[cID] = ready;
                     supplementaryHex.Background = new SolidColorBrush(Color.FromRgb((byte)ready[0], (byte)ready[1], (byte)ready[2]));
                     supplementaryHex.BorderBrush = new SolidColorBrush(Color.FromRgb((byte)((ready[0] < 234) ? ready[0] + 32 : ready[0]), (byte)((ready[1] < 234) ? ready[1] + 32 : ready[1]), (byte)((ready[2] < 234) ? ready[2] + 32 : ready[2])));
                     Blend();
@@ -114,13 +113,13 @@ namespace rgb_mixer_revision2
             {
                 blendButton.Background = new SolidColorBrush(Color.FromRgb(244, 67, 54));
                 blendButton.BorderBrush = new SolidColorBrush(Color.FromRgb(166, 44, 35));
-                blendImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/block.png"));
+                blendImage.Source = new BitmapImage(new Uri("pack://application:,,,/block.png"));
             }
             else
             {
                 blendButton.Background = new SolidColorBrush(Color.FromRgb(139, 195, 74));
                 blendButton.BorderBrush = new SolidColorBrush(Color.FromRgb(78, 109, 43));
-                blendImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/blend.png"));
+                blendImage.Source = new BitmapImage(new Uri("pack://application:,,,/blend.png"));
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -130,25 +129,17 @@ namespace rgb_mixer_revision2
             ChangeButton();
             Blend();
         }
-        private void Arrow1(object sender, RoutedEventArgs e)
-        {
-            ArrowTrigger(-1);
-        }
-        private void Arrow2(object sender, RoutedEventArgs e)
-        {
-            ArrowTrigger();
-        }
         private void RefreshInterface(int cID)
         {
             ColorID.Content = cID + 1;
             hex.Text = hexes[cID][0] + ", " + hexes[cID][1] + ", " + hexes[cID][2];
-            RegisterColor(s, rea);
+            RegisterColor(null, null);
             ChangeButton();
         }
-        private void ArrowTrigger(int delta = 1)
+        private void ArrowTrigger(object sender, RoutedEventArgs? e)
         {
-            RegisterColor(s, rea);
-            int cID = Int32.Parse(ColorID.Content.ToString()) - 1 + delta;
+            RegisterColor(null, null);
+            int cID = Int32.Parse(ColorID.Content.ToString()) - 1 + Int32.Parse(((Button)sender).Tag.ToString());
             if (cID > hexes.Count - 1)
                 cID = 0;
             else if (cID < 0)
@@ -160,7 +151,7 @@ namespace rgb_mixer_revision2
         {
             hexes.Add([255, 255, 255]);
             toMix.Add(false);
-            ArrowTrigger(hexes.Count - Int32.Parse(ColorID.Content.ToString()));
+            ArrowTrigger(new Button() { Tag = hexes.Count - Int32.Parse(ColorID.Content.ToString()) }, null);
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)
@@ -170,10 +161,9 @@ namespace rgb_mixer_revision2
                 int cID = Int32.Parse(ColorID.Content.ToString()) - 1;
                 hexes.RemoveAt(cID);
                 toMix.RemoveAt(cID);
-                if(cID == hexes.Count)
-                    ArrowTrigger(-1);
-                else
-                    RefreshInterface(cID);
+                if (cID == hexes.Count)
+                    cID--;
+                RefreshInterface(cID);
             }
         }
     }
