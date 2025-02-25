@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rgb_mixer_revision2"
         mc:Ignorable="d"
-        Title="Color Mixer by jakubekgranie" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="s.net Color Mixer by jakubekgranie" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary Source="dict.xaml"/>
     </Window.Resources>
